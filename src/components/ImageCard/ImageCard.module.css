@@ -1,0 +1,17 @@
+.imageCard {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.imageCard:hover {
+    transform: scale(1.05);
+}
+
+.imageCardImg {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

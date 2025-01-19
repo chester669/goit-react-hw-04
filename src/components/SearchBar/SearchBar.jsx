@@ -1,26 +1,41 @@
 import React, { useState } from "react";
-import "./SearchBar.module.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "./SearchBar.module.css";
 
 function SearchBar({ onSubmit }) {
-  const [input, setInput] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(input);
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (searchTerm.trim() === "") {
+      toast.error("Please enter a search term!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      return;
+    }
+    onSubmit(searchTerm.trim());
+    setSearchTerm("");
   };
 
   return (
-    <header>
+    <header className={styles.searchBar}>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Search images and photos"
-          autoComplete="off"
-          autoFocus
+          placeholder="Search images..."
+          value={searchTerm}
+          onChange={handleInputChange}
+          className={styles.searchInput}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={styles.searchButton}>
+          Search
+        </button>
       </form>
     </header>
   );

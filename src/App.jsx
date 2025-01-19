@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
-import ImageGall from "./components/ImageGall/ImageGall";
-import LoadBtn from "./components/LoadBtn/LoadBtn";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import Loader from "./components/Loader/Loader";
 import ErrorMsg from "./components/ErrorMsg/ErrorMsg";
 import ImageModal from "./components/ImageModal/ImageModal";
@@ -54,7 +54,7 @@ function App() {
   };
 
   const handleSearch = (searchQuery) => {
-    if (query === searchQuery) return; 
+    if (query === searchQuery) return;
     setQuery(searchQuery);
     setPage(1);
   };
@@ -67,7 +67,7 @@ function App() {
     if (query) {
       fetchImages(query, page);
     }
-  }, [query, page]); 
+  }, [query, page]);
 
   const openModal = (image) => {
     setSelectedImage(image);
@@ -81,9 +81,11 @@ function App() {
     <div className="App">
       <SearchBar onSubmit={handleSearch} />
       {error && <ErrorMsg message={error} />}
-      <ImageGall images={images} onImageClick={openModal} />
+      <ImageGallery images={images} onImageClick={openModal} />
       {loading && <Loader />}
-      {images.length > 0 && !loading && <LoadBtn onClick={loadMoreImages} />}
+      {images.length > 0 && !loading && (
+        <LoadMoreBtn onClick={loadMoreImages} />
+      )}
       {selectedImage && (
         <ImageModal image={selectedImage} onClose={closeModal} />
       )}

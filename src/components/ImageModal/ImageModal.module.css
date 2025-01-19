@@ -1,4 +1,4 @@
-.image-modal {
+.imageModal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -6,36 +6,23 @@
     background: white;
     padding: 20px;
     border-radius: 10px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.image-modal img {
-    max-width: 100%;
-    max-height: 80%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.image-modal button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 999;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.closeButton {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    background-color: #ff1a1a;
 }
